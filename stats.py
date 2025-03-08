@@ -10,4 +10,13 @@ def get_num_words():
     num_words = count_words(text)
     print(f"{num_words} words found in the document")
 
-get_num_words()
+def character_count():
+    characters = {}
+    for c in text:
+        lowered = c.lower()
+        if lowered in chars:
+            characters[lowered] += 1
+        else:
+            characters[lowered] = 1
+    return characters
+    print(characters)
