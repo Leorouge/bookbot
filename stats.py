@@ -6,17 +6,25 @@ def count_words(text):
     return len(text.split())
 
 def get_num_words():
-    text = get_book_text("books/frankenstein.txt")
+    text = get_book_text(path)
     num_words = count_words(text)
-    print(f"{num_words} words found in the document")
 
-def character_count():
+def character_count(text):
     characters = {}
     for c in text:
         lowered = c.lower()
-        if lowered in chars:
-            characters[lowered] += 1
-        else:
-            characters[lowered] = 1
+        if lowered.isalpha():
+            if lowered in characters:
+                characters[lowered] += 1
+            else:
+                characters[lowered] = 1
     return characters
-    print(characters)
+
+def sort_characters(char_dict):
+    chars_list = []
+    for char, count in char_dict.items():
+        chars_list.append({"char": char, "count": count})
+    
+    chars_list.sort(reverse=True, key=lambda x: x["count"])
+    return chars_list
+
